@@ -7,11 +7,11 @@ from .models import User, Team, Activity, Leaderboard, Workout
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
-        'users': 'api/users/',
-        'teams': 'api/teams/',
-        'activities': 'api/activities/',
-        'leaderboard': 'api/leaderboard/',
-        'workouts': 'api/workouts/'
+        'users': request.build_absolute_uri('/api/users/'),
+        'teams': request.build_absolute_uri('/api/teams/'),
+        'activities': request.build_absolute_uri('/api/activities/'),
+        'leaderboard': request.build_absolute_uri('/api/leaderboard/'),
+        'workouts': request.build_absolute_uri('/api/workouts/')
     })
 
 class UserViewSet(viewsets.ModelViewSet):
